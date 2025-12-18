@@ -18,6 +18,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", indexHandler)
+	log.Println("Server starting...")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal("Error: ", err)
 	}
