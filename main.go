@@ -8,12 +8,22 @@ import (
 )
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
+	type Contacts struct {
+		Email   string
+		Phone   string
+		Address string
+	}
+	OurContacts := Contacts{
+		Email:   "veryovkin@bmstu.ru",
+		Phone:   "+7 (999) 123-32-12",
+		Address: "Москва, ул. Радио д. 1",
+	}
 	tmpl, err := template.ParseFiles("pages/index.html")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	tmpl.Execute(w, nil)
+	tmpl.Execute(w, OurContacts)
 }
 
 func main() {
